@@ -1,20 +1,20 @@
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
-const cleanCSS = require('gulp-clean-css');
+//const cleanCSS = require('gulp-clean-css'); //  пока не нужно
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 const gcmq = require('gulp-group-css-media-queries');
 const preproc = require('gulp-less');
 
 const config = {
-    src: './src',
+    src: './',
     css: {
-        watch: '/precss/**/*.less',
-        src: '/precss/+(styles|styles-ie).less',
-        dest: '/css'
+        watch: 'prestyles/**/*.less',
+        src: 'prestyles/styles.less',
+        dest: 'styles'
     },
     html: {
-        src: '/index.html'
+        src: 'index.html'
     }
 };
 
@@ -27,9 +27,9 @@ gulp.task('preproc', function () {
                 browsers: ['> 0.1%'],
                 cascade: false
             }))
-            .pipe(cleanCSS({
-                level: 2
-            }))
+            // .pipe(cleanCSS({ //  пока отключено
+            //     level: 2
+            // }))
             .pipe(sourcemaps.write('.'))
             .pipe(gulp.dest(config.src + config.css.dest))
             .pipe(browserSync.reload({
@@ -37,7 +37,7 @@ gulp.task('preproc', function () {
             }));
 });
 
-gulp.task('watch', ['browserSync'], function () {
+gulp.task('watch', ['preproc', 'browserSync'], function () {
     gulp.watch(config.src + config.css.watch, ['preproc']);
     gulp.watch(config.src + config.html.src, browserSync.reload);
 });
