@@ -4,13 +4,13 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 const gcmq = require('gulp-group-css-media-queries');
-const preproc = require('gulp-less');
+const preproc = require('gulp-stylus');
 
 const config = {
     src: './',
     css: {
-        watch: 'prestyles/**/*.less',
-        src: 'prestyles/styles.less',
+        watch: 'prestyles/**/*.styl',
+        src: 'prestyles/styles.styl',
         dest: 'styles'
     },
     html: {
