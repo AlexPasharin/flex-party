@@ -5,8 +5,10 @@
 
 import React from 'react'
 
+import '../prestyles/header.styl'
+
 const Header = () => (
-    <header class="header">
+    <header className="header">
       <HeaderButtons />
       <HeaderLogo />
       <HeaderBasket />
@@ -14,23 +16,23 @@ const Header = () => (
   )
 
 const HeaderButtons = () => (
-  <div class="header-buttons">
-    <button disabled>{Login}</button>
-    <button disabled>{Register}</button>
+  <div className="header-buttons">
+    <button disabled>{'Login'}</button>
+    <button disabled>{'Register'}</button>
   </div>
 )
 
 const HeaderLogo = () => (
-  <div class="header-logo">
-    <div class="header-logo__title">{Dreamy}</div>
-    <div class="header-logo__subtitle">{Online Store}</div>
+  <div className="header-logo">
+    <div className="header-logo__title">{'Dreamy'}</div>
+    <div className="header-logo__subtitle">{'Online Store'}</div>
   </div>
 )
 
 const HeaderBasket = () => (
-  <div class="header-basket">
-    <div class="header-basket__icon">{My Cart(0):$0}</div>
-    <button class="header-basket__checkout" disabled>{Checkout}</button>
-    <input class="header-basket__search" type="text" placeholder="Search"/>
+  <div className="header-basket">
+    <div className="header-basket__icon">{'My Cart(0):$0'}</div>
+    <button className="header-basket__checkout" disabled>{'Checkout'}</button>
+    <input className="header-basket__search" type="text" placeholder="Search"/>
   </div>
 )
