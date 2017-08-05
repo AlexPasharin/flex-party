@@ -5,15 +5,13 @@
 
 import React from 'react'
 
-const Header = () => {
-  return (
+const Header = () => (
     <header class="header">
       <HeaderButtons />
       <HeaderLogo />
       <HeaderBasket />
     </header>
   )
-}
 
 const HeaderButtons = () => (
   <div class="header-buttons">
