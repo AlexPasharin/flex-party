@@ -12,6 +12,8 @@ const preproc = require('gulp-stylus')
 const browserify = require('browserify')
 const babelify = require('babelify')
 const source = require('vinyl-source-stream')
+const uglify = require( "gulp-uglify")
+const buffer = require( "vinyl-buffer")
 
 const config = {
     src: './',
@@ -54,10 +56,13 @@ gulp.task('react', () => {
       entries: config.src + config.react.src,
       extensions: ['.jsx']
     })
-
       .transform(babelify, {presets: ["es2015", "react"]})
       .bundle()
       .pipe(source(config.src + config.react.dest))
+      .pipe(buffer())
+      .pipe(uglify())
+      .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(sourcemaps.write('./maps'))
       .pipe(gulp.dest(config.src))
       .pipe(browserSync.reload({
           stream: true
