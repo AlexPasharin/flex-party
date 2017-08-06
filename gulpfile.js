@@ -1,10 +1,17 @@
-const gulp = require('gulp');
-const autoprefixer = require('gulp-autoprefixer');
-//const cleanCSS = require('gulp-clean-css'); //  пока не нужно
-const browserSync = require('browser-sync').create();
-const sourcemaps = require('gulp-sourcemaps');
-const gcmq = require('gulp-group-css-media-queries');
-const preproc = require('gulp-stylus');
+const gulp = require('gulp')
+
+// modules for css
+const autoprefixer = require('gulp-autoprefixer')
+//const cleanCSS = require('gulp-clean-css') //  пока не нужно
+const browserSync = require('browser-sync').create()
+const sourcemaps = require('gulp-sourcemaps')
+const gcmq = require('gulp-group-css-media-queries')
+const preproc = require('gulp-stylus')
+
+// modules for js
+const browserify = require('browserify')
+const babelify = require('babelify')
+const source = require('vinyl-source-stream')
 
 const config = {
     src: './',
@@ -15,8 +22,13 @@ const config = {
     },
     html: {
         src: 'index.html'
+    },
+    react: {
+      watch: 'react/**/*.jsx',
+      src: 'react/index.jsx',
+      dest: 'index.js'
     }
-};
+}
 
 gulp.task('preproc', function () {
     gulp.src(config.src + config.css.src)
@@ -34,18 +46,30 @@ gulp.task('preproc', function () {
             .pipe(gulp.dest(config.src + config.css.dest))
             .pipe(browserSync.reload({
                 stream: true
-            }));
-});
+            }))
+})
 
-gulp.task('watch', ['preproc', 'browserSync'], function () {
-    gulp.watch(config.src + config.css.watch, ['preproc']);
-    gulp.watch(config.src + config.html.src, browserSync.reload);
-});
+gulp.task('react', () => {
+    return browserify(config.src + config.react.src)
+      .transform(babelify, {presets: ["es2015", "react"]})
+      .bundle()
+      .pipe(source(config.src + config.react.dest))
+      .pipe(gulp.dest(config.src))
+      .pipe(browserSync.reload({
+          stream: true
+      }))
+})
+
+gulp.task('watch', ['react', 'preproc', 'browserSync'], function () {
+    gulp.watch(config.src + config.css.watch, ['preproc'])
+    gulp.watch(config.src + config.html.src, browserSync.reload)
+    gulp.watch(config.src + config.react.watch, ['react'])
+})
 
 gulp.task('browserSync', function () {
     browserSync.init({
         server: {
             baseDir: config.src
         }
-    });
-});
+    })
+})
