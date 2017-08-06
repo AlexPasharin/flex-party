@@ -21226,8 +21226,13 @@ var HeaderBasket = function HeaderBasket(props) {
     { className: "header-basket" },
     _react2.default.createElement(
       "div",
-      { className: "header-basket__icon" },
-      'My Cart(0):$0'
+      { className: "header-basket__cart" },
+      _react2.default.createElement("div", { className: "header-basket__cart-icon" }),
+      _react2.default.createElement(
+        "span",
+        null,
+        'My Cart(0):$0'
+      )
     ),
     _react2.default.createElement(
       "button",

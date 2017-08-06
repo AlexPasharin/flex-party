@@ -31,7 +31,10 @@ const HeaderLogo = props => (
 
 const HeaderBasket = props => (
   <div className="header-basket">
-    <div className="header-basket__icon">{'My Cart(0):$0'}</div>
+    <div className="header-basket__cart">
+      <div className="header-basket__cart-icon"></div>
+      <span>{'My Cart(0):$0'}</span>
+    </div>
     <button className="header-basket__checkout" disabled>{'Checkout'}</button>
     <input className="header-basket__search" type="text" placeholder="Search"/>
   </div>

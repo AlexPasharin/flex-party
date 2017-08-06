@@ -39,9 +39,17 @@
   flex-wrap: wrap;
 }
 
-.header-basket__icon {
+.header-basket__cart {
   -ms-flex-preferred-size: 50%;
   flex-basis: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header-basket__cart-icon {
+  background: url("../img/shopping-cart.svg") no-repeat;
+  width: 30px;
 }
 
 .header-basket__checkout {
