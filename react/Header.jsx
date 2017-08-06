@@ -32,7 +32,7 @@ const HeaderLogo = props => (
 const HeaderBasket = props => (
   <div className="header-basket">
     <div className="header-basket__cart">
-      <div className="header-basket__cart-icon"></div>
+      <img src="img/shopping-cart.svg" className="header-basket__cart-icon" />
       <span>{'My Cart(0):$0'}</span>
     </div>
     <button className="header-basket__checkout" disabled>{'Checkout'}</button>
