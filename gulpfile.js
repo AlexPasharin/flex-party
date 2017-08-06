@@ -50,7 +50,11 @@ gulp.task('preproc', function () {
 })
 
 gulp.task('react', () => {
-    return browserify(config.src + config.react.src)
+    return browserify({
+      entries: config.src + config.react.src,
+      extensions: ['.jsx']
+    })
+
       .transform(babelify, {presets: ["es2015", "react"]})
       .bundle()
       .pipe(source(config.src + config.react.dest))

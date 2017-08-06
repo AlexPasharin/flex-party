@@ -21254,7 +21254,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactDom = require('react-dom');
 
-var _Header = require('./Header.jsx');
+var _Header = require('./Header');
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -21270,4 +21270,4 @@ var App = function App(props) {
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('root'));
 
-},{"./Header.jsx":186,"react":185,"react-dom":31}]},{},[187]);
+},{"./Header":186,"react":185,"react-dom":31}]},{},[187]);
