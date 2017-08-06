@@ -1,5 +1,4 @@
 const gulp = require('gulp')
-
 // modules for css
 const autoprefixer = require('gulp-autoprefixer')
 //const cleanCSS = require('gulp-clean-css') //  пока не нужно
@@ -54,14 +53,16 @@ gulp.task('preproc', function () {
 gulp.task('react', () => {
     return browserify({
       entries: config.src + config.react.src,
-      extensions: ['.jsx']
+      extensions: ['.jsx'],
+      debug: true
     })
       .transform(babelify, {presets: ["es2015", "react"]})
       .bundle()
       .pipe(source(config.src + config.react.dest))
       .pipe(buffer())
-      .pipe(uglify())
       .pipe(sourcemaps.init({loadMaps: true}))
+      .pipe(uglify())
+      .on('error', err => console.error.bind(console))
       .pipe(sourcemaps.write('./maps'))
       .pipe(gulp.dest(config.src))
       .pipe(browserSync.reload({
