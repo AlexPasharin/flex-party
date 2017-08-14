@@ -33,21 +33,21 @@ const config = {
 
 gulp.task('preproc', function () {
     gulp.src(config.src + config.css.src)
-            .pipe(sourcemaps.init())
-            .pipe(preproc())
-            .pipe(gcmq())
-            .pipe(autoprefixer({
-                browsers: ['> 0.1%'],
-                cascade: false
-            }))
-            // .pipe(cleanCSS({ //  пока отключено
-            //     level: 2
-            // }))
-            .pipe(sourcemaps.write('.'))
-            .pipe(gulp.dest(config.src + config.css.dest))
-            .pipe(browserSync.reload({
-                stream: true
-            }))
+      .pipe(sourcemaps.init())
+      .pipe(preproc())
+      .pipe(gcmq())
+      .pipe(autoprefixer({
+          browsers: ['> 0.1%'],
+          cascade: false
+      }))
+      // .pipe(cleanCSS({ //  пока отключено
+      //     level: 2
+      // }))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(config.src + config.css.dest))
+      .pipe(browserSync.reload({
+          stream: true
+      }))
 })
 
 gulp.task('react', () => {

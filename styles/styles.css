@@ -64,7 +64,16 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+#root {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.main-container {
+  margin: 0 15px;
+}
+
+@media (min-width: 641px) {
   .header {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;

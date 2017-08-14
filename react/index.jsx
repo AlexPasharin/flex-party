@@ -3,7 +3,7 @@ import {render} from 'react-dom'
 import Header from './Header'
 
 const App = props => (
-    <div className="container">
+    <div className="main-container">
       <Header />
     </div>
 )
